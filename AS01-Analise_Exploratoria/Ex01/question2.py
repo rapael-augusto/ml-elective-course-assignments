@@ -16,8 +16,8 @@ for class_name, data in flower_class.items():
 
     no_class_data = data.drop(columns=["class"])
 
-    # A) representação tabular: (This one uses ".sample" method, so, by grouping the dataframe by "class", the code picks two random from each one)
-    # print(data.groupby(["class"]).sample(n=2))
+    # A) representação tabular:
+    # print(data.sample(n=2))
 
     # B) média
     # Who would have guessed pandas actually can do this in a single line?
