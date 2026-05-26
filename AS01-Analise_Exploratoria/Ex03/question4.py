@@ -5,7 +5,6 @@ import seaborn as sns
 columns = ["class", "alcohol", "malicacid", "ash", "alcalinity-of-ash", "magnesium", "total-phenols", "flavanoids",
            "nonflavanoid-phenols", "proanthocyanins", "color-intensity", "hue", "0D280_0D315_of_diluted_wines", "proline"]
 df = pd.read_csv("../databases/wine/wine.data", names=columns)
-df_no_class = df.drop(columns=["class"])
 
 fig, axes = plt.subplots(3, 5, figsize=(20, 15))
 axes = axes.flatten()

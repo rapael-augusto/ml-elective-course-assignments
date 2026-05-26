@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 columns = ["sepal-length", "sepal-width", "petal-length", "petal-width", "class"]
 df = pd.read_csv("../databases/iris/iris.data", names=columns)
-df_no_class = df.drop(columns=["class"])
 
 # A) boxplot
 #fig, axes = plt.subplots(2, 2, figsize=(10, 8))
@@ -46,4 +45,3 @@ df_no_class = df.drop(columns=["class"])
 #    ax.set_xlabel(var)
 
 #plt.show()
-

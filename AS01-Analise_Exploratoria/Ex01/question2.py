@@ -4,7 +4,6 @@ from scipy import stats
 # Reading the data (Why this thing is ".data" instead of ".csv"?)
 columns = ["sepal-length", "sepal-width", "petal-length", "petal-width", "class"]
 df = pd.read_csv("../databases/iris/iris.data", names=columns)
-df_no_class = df.drop(columns=["class"])
 
 flower_class = {
     'setosa': df[df['class'] == 'Iris-setosa'].copy(),

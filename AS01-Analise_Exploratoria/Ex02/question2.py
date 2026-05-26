@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 columns = ["buying", "maint", "doors", "persons", "lug_boot", "safety", "class"]
 df = pd.read_csv("../databases/car+evaluation/car.data", names=columns)
