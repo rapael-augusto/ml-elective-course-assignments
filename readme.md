@@ -1,4 +1,4 @@
-## Bootcamp TOTVS Projeccts
+## ML Elective Course
 
 ## Description:
 A collection of assignments from the ml elective course from UFAPE (Universidade Federal Rural de Pernmabuco).
