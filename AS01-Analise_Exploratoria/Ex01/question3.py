@@ -11,14 +11,13 @@ df_no_class = df.drop(columns=["class"])
 #print(df.groupby(["class"]).sample(n=2))
 
 # B) média
-# Who would have guessed pandas actually can do this in a single line?
 # print(df.mean(numeric_only=True))
 
 # C) mediana
 # print(df.median(numeric_only=True))
 
 # D): média aparada (Pandas doesn't have a trim_mean method, but scipy does, although i need to drop the class column...)
-# print(stats.trim_mean(df_no_class, proportiontocut=0.1))
+# print('\n'.join([f"{columns[i]}: {var}" for i, var in enumerate(stats.trim_mean(df_no_class, proportiontocut=0.1))]))
 
 # E) desvio absoluto médio
 # print((df_no_class - df_no_class.mean()).abs().mean())
@@ -30,7 +29,7 @@ df_no_class = df.drop(columns=["class"])
 # print(df.std(numeric_only=True))
 
 # H) desvio absoluto mediano da mediana
-# print(stats.median_abs_deviation(df_no_class))
+# print('\n'.join([f"{columns[i]}: {var}" for i, var in enumerate(stats.median_abs_deviation(df_no_class))]))
 
 # I) máximo
 # print(df.max(numeric_only=True))
@@ -60,4 +59,6 @@ df_no_class = df.drop(columns=["class"])
 # iq_range = df_no_class.quantile(q=0.75, numeric_only=True) - df_no_class.quantile(q=0.25, numeric_only=True)
 # lower_edge = df_no_class.quantile(q=0.25, numeric_only=True) - (1.5 * iq_range)
 # upper_edge = df_no_class.quantile(q=0.75, numeric_only=True) + (1.5 * iq_range)
-# print(((df_no_class < lower_edge) | (df_no_class > upper_edge)).sum())
+# query = (df_no_class < lower_edge) | (df_no_class > upper_edge)
+# print(query.sum())
+# print(df_no_class[query.any(axis=1)].where(query[query.any(axis=1)]))
