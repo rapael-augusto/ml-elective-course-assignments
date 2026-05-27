@@ -35,8 +35,10 @@ df = pd.read_csv("../databases/iris/iris.data", names=columns)
 # axes = axes.flatten()
 
 # for i, var in enumerate(columns[:-1]):
-#    ax = df[var].plot.hist(ax=axes[i], fig=(4, 4))
-#    ax.set_xlabel(var)
+#     sns.histplot(data=df, x=var, stat='density', ax=axes[i])
+#     axes[i].set_xlim(mt.floor(df[var].min()), mt.ceil(df[var].max()))
+#     axes[i].set_xlabel(var)
+#     axes[i].set_ylabel('frequency')
 
 # plt.show()
 
