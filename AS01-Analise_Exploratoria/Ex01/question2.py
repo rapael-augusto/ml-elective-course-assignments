@@ -16,55 +16,55 @@ for class_name, data in flower_class.items():
 
     no_class_data = data.drop(columns=["class"])
 
-    # # A) representação tabular:
+    # A) representação tabular:
     # print(data.sample(n=2))
 
-    # # B) média
+    # B) média
     # print(data.mean(numeric_only=True))
 
-    # # C) mediana
+    # C) mediana
     # print(data.median(numeric_only=True))
 
-    # # D): média aparada (Pandas doesn't have a trim_mean method, but scipy does, although i need to drop the class column...)
+    # D): média aparada (Pandas doesn't have a trim_mean method, but scipy does, although i need to drop the class column...)
     # print('\n'.join([f"{columns[i]}: {var}" for i, var in enumerate(stats.trim_mean(no_class_data, proportiontocut=0.1))]))
 
-    # # E) desvio absoluto médio
+    # E) desvio absoluto médio
     # print((no_class_data - no_class_data.mean()).abs().mean())
 
-    # # F) variância
+    # F) variância
     # print(data.var(numeric_only=True))
 
-    # # G) desvio-padrão
+    # G) desvio-padrão
     # print(data.std(numeric_only=True))
 
-    # # H) desvio absoluto mediano da mediana
+    # H) desvio absoluto mediano da mediana
     # print('\n'.join([f"{columns[i]}: {var}" for i, var in enumerate(stats.median_abs_deviation(no_class_data))]))
 
-    # # I) máximo
+    # I) máximo
     # print(data.max(numeric_only=True))
 
-    # # J) mínimo
+    # J) mínimo
     # print(data.min(numeric_only=True))
 
-    # # K) amplitude
+    # K) amplitude
     # print(data.max(numeric_only=True) - data.min(numeric_only=True))
 
-    # # L) 10o percentil
+    # L) 10o percentil
     # print(data.quantile(q=0.1, numeric_only=True))
 
-    # # M) 25o percentil
+    # M) 25o percentil
     # print(data.quantile(q=0.25, numeric_only=True))
 
-    # # N) 75o percentil
+    # N) 75o percentil
     # print(data.quantile(q=0.75, numeric_only=True))
 
-    # # O) 90o percentil
+    # O) 90o percentil
     # print(data.quantile(q=0.9, numeric_only=True))
 
-    # # P) amplitude interquartil
+    # P) amplitude interquartil
     # print(data.quantile(q=0.75, numeric_only=True) - data.quantile(q=0.25, numeric_only=True))
 
-    # # Q) outliers (using the iqr method, 1.5 standart multiplier)
+    # Q) outliers (using the iqr method, 1.5 standart multiplier)
     # iq_range = data.quantile(q=0.75, numeric_only=True) - data.quantile(q=0.25, numeric_only=True)
     # lower_edge = data.quantile(q=0.25, numeric_only=True) - (1.5 * iq_range)
     # upper_edge = data.quantile(q=0.75, numeric_only=True) + (1.5 * iq_range)
