@@ -1,0 +1,282 @@
+2 samples:
+    Order_ID  Distance_km Weather Traffic_Level Time_of_Day Vehicle_Type  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
+    701       641         0.89   Rainy           Low     Morning          Car                     9                     0.0                 20
+    518       984         1.97   Clear          High     Morning          Car                    28                     7.0                 43
+
+médias:
+    Distance_km               10.059970
+    Preparation_Time_min      16.982000
+    Courier_Experience_yrs     4.579381
+    Delivery_Time_min         56.732000
+
+medianas:
+    Distance_km               10.19
+    Preparation_Time_min      17.00
+    Courier_Experience_yrs     5.00
+    Delivery_Time_min         55.50
+
+média aparada:
+    Distance_km              10.01208763
+    Preparation_Time_min     16.98324742
+    Courier_Experience_yrs   4.59149485 (tem 30 valores vazios que foram descartados)
+    Delivery_Time_min        55.64561856
+
+desvio absoluto médio:
+    Distance_km                4.946691
+    Preparation_Time_min       6.258360
+    Courier_Experience_yrs     2.548224
+    Delivery_Time_min         17.796352
+
+variância:
+    Distance_km                32.451884
+    Preparation_Time_min       51.905582
+    Courier_Experience_yrs      8.493692
+    Delivery_Time_min         487.125301
+
+desvio padrão:
+    Distance_km                5.696656
+    Preparation_Time_min       7.204553
+    Courier_Experience_yrs     2.914394
+    Delivery_Time_min         22.070915
+
+desvio absoluto mediano da mediana:
+    Distance_km              4.95
+    Preparation_Time_min     6
+    Courier_Experience_yrs   6 (tem 30 valores vazios que foram descartados)
+    Delivery_Time_min        15
+
+máximo:
+    Distance_km                 19.99
+    Preparation_Time_min        29.00
+    Courier_Experience_yrs       9.00
+    Delivery_Time_min          153.00
+
+mínimo:
+    Distance_km               0.59
+    Preparation_Time_min      5.00
+    Courier_Experience_yrs    0.00
+    Delivery_Time_min         8.00
+
+amplitude: 
+    Distance_km                19.4
+    Preparation_Time_min       24.0
+    Courier_Experience_yrs      9.0
+    Delivery_Time_min         145.0
+
+10º percentil:
+    Distance_km                 2.317
+    Preparation_Time_min        7.000
+    Courier_Experience_yrs      1.000
+    Delivery_Time_min          29.000
+
+25º percentil:
+    Distance_km                 5.105
+    Preparation_Time_min       11.000
+    Courier_Experience_yrs      2.000
+    Delivery_Time_min          41.000
+
+75º percentil:
+    Distance_km                15.0175
+    Preparation_Time_min       23.0000
+    Courier_Experience_yrs      7.0000
+    Delivery_Time_min          71.0000
+
+90º percentil:
+    Distance_km                18.041
+    Preparation_Time_min       27.000
+    Courier_Experience_yrs      9.000
+    Delivery_Time_min          86.000
+
+amplitude interquartil:
+    Distance_km                 9.9125
+    Preparation_Time_min       12.0000
+    Courier_Experience_yrs      5.0000
+    Delivery_Time_min          30.0000
+
+outliers: (todos da coluna 'Delivery_Time_min')
+        Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
+    29         18.05                    10                     7.0                123
+    127        18.97                    25                     4.0                141
+    379        18.46                    29                     1.0                153
+    452        15.64                    20                     4.0                141
+    784        14.83                    19                     4.0                126
+    924        17.81                    21                     4.0                122
+
+tabela de frequência (3 intervalos, por Vehicle_Type):
+    Vehicle_Type     Bike  Car  Scooter
+    Distance_km                        
+    (0.571, 7.057]    182   66      102
+    (7.057, 13.523]   158   64      114
+    (13.523, 19.99]   163   65       86
+    Vehicle_Type          Bike  Car  Scooter
+    Preparation_Time_min                    
+    (4.976, 13.0]          180   70      110
+    (13.0, 21.0]           166   67       83
+    (21.0, 29.0]           157   58      109
+    Vehicle_Type            Bike  Car  Scooter
+    Courier_Experience_yrs                    
+    (-0.009, 3.0]            184   75      118
+    (3.0, 6.0]               157   60       76
+    (6.0, 9.0]               147   57       96
+    Vehicle_Type       Bike  Car  Scooter
+    Delivery_Time_min                    
+    (7.855, 56.333]     258  100      160
+    (56.333, 104.667]   231   90      135
+    (104.667, 153.0]     14    5        7
+
+tabela de frequência (5 intervalos, por Vehicle_Type):
+    Vehicle_Type    Bike  Car  Scooter
+    Distance_km                       
+    (0.571, 4.47]    128   40       58
+    (4.47, 8.35]      86   41       70
+    (8.35, 12.23]     93   40       59
+    (12.23, 16.11]    91   33       62
+    (16.11, 19.99]   105   41       53
+    Vehicle_Type          Bike  Car  Scooter
+    Preparation_Time_min                    
+    (4.976, 9.8]           103   33       63
+    (9.8, 14.6]            102   47       64
+    (14.6, 19.4]           100   38       48
+    (19.4, 24.2]            94   38       63
+    (24.2, 29.0]           104   39       64
+    Vehicle_Type            Bike  Car  Scooter
+    Courier_Experience_yrs                    
+    (-0.009, 1.8]            106   37       55
+    (1.8, 3.6]                78   38       63
+    (3.6, 5.4]                93   37       54
+    (5.4, 7.2]               104   46       50
+    (7.2, 9.0]               107   34       68
+    Vehicle_Type       Bike  Car  Scooter
+    Delivery_Time_min                    
+    (7.855, 37.0]       111   36       66
+    (37.0, 66.0]        228   95      140
+    (66.0, 95.0]        139   52       84
+    (95.0, 124.0]        24   10       11
+    (124.0, 153.0]        1    2        1
+
+moda:
+   Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
+          12.85                    14                     6.0                 71
+
+matriz de correlação:
+                            Order_ID  Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
+    Order_ID                1.000000    -0.024483             -0.035100                0.013152          -0.036650
+    Distance_km            -0.024483     1.000000             -0.009037               -0.007842           0.780998
+    Preparation_Time_min   -0.035100    -0.009037              1.000000               -0.030830           0.307350
+    Courier_Experience_yrs  0.013152    -0.007842             -0.030830                1.000000          -0.090433
+    Delivery_Time_min      -0.036650     0.780998              0.307350               -0.090433           1.000000
+
+tabelas de correlação:
+    crosstab between Distance_km and Vehicle_Type:
+    Vehicle_Type  Bike  Car  Scooter  total
+    Distance_km                            
+    0.59             1    0        0      1
+    0.6              1    0        0      1
+    0.61             0    0        1      1
+    0.64             1    0        0      1
+    0.68             1    0        0      1
+    ...            ...  ...      ...    ...
+    19.86            1    0        0      1
+    19.93            1    0        0      1
+    19.94            1    0        0      1
+    19.99            1    0        0      1
+    total          503  195      302   1000
+
+    [786 rows x 4 columns]
+
+    crosstab between Weather and Vehicle_Type:
+    Vehicle_Type  Bike  Car  Scooter  total
+    Weather                                
+    Clear          239   77      154    470
+    Foggy           52   20       31    103
+    Rainy           98   44       62    204
+    Snowy           52   25       20     97
+    Windy           53   20       23     96
+    total          494  186      290    970
+
+    crosstab between Traffic_Level and Vehicle_Type:
+    Vehicle_Type   Bike  Car  Scooter  total
+    Traffic_Level                           
+    High            100   36       61    197
+    Low             194   87      102    383
+    Medium          199   65      126    390
+    total           493  188      289    970
+
+    crosstab between Time_of_Day and Vehicle_Type:
+    Vehicle_Type  Bike  Car  Scooter  total
+    Time_of_Day                            
+    Afternoon      140   53       91    284
+    Evening        150   50       93    293
+    Morning        140   74       94    308
+    Night           54   13       18     85
+    total          484  190      296    970
+
+    crosstab between Vehicle_Type and Vehicle_Type:
+    Vehicle_Type  Bike  Car  Scooter  total
+    Vehicle_Type                           
+    Bike           503    0        0    503
+    Car              0  195        0    195
+    Scooter          0    0      302    302
+    total          503  195      302   1000
+
+    crosstab between Preparation_Time_min and Vehicle_Type:
+    Vehicle_Type          Bike  Car  Scooter  total
+    Preparation_Time_min                           
+    5                       16    5        9     30
+    6                       21    9       14     44
+    7                       20    5       12     37
+    8                       18    8       16     42
+    9                       28    6       12     46
+    10                      21   12       14     47
+    11                      30    6       10     46
+    12                      13   11       14     38
+    13                      13    8        9     30
+    14                      25   10       17     52
+    15                      17    6        6     29
+    16                      29    9       11     49
+    17                      24    9       12     45
+    18                      17    5        6     28
+    19                      13    9       13     35
+    20                      23    8        8     39
+    21                      18   11       10     39
+    22                      19   10       13     42
+    23                      18    4       16     38
+    24                      16    5       16     37
+    25                      28   10       10     48
+    26                      23    5       12     40
+    27                      16   11       13     40
+    28                      18    6       16     40
+    29                      19    7       13     39
+    total                  503  195      302   1000
+
+    crosstab between Courier_Experience_yrs and Vehicle_Type:
+    Vehicle_Type            Bike  Car  Scooter  total
+    Courier_Experience_yrs                           
+    0.0                       49   19       23     91
+    1.0                       57   18       32    107
+    2.0                       46   15       38     99
+    3.0                       32   23       25     80
+    4.0                       43   23       28     94
+    5.0                       50   14       26     90
+    6.0                       64   23       22    109
+    7.0                       40   23       28     91
+    8.0                       53   11       37    101
+    9.0                       54   23       31    108
+    total                    488  192      290    970
+
+    crosstab between Delivery_Time_min and Vehicle_Type:
+    Vehicle_Type       Bike  Car  Scooter  total
+    Delivery_Time_min                           
+    8                     1    0        0      1
+    13                    0    0        1      1
+    14                    3    0        1      4
+    15                    1    0        0      1
+    16                    3    0        1      4
+    ...                 ...  ...      ...    ...
+    123                   0    0        1      1
+    126                   0    1        0      1
+    141                   1    1        0      2
+    153                   0    0        1      1
+    total               503  195      302   1000
+
+    [109 rows x 4 columns]

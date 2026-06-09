@@ -42,7 +42,6 @@ df = pd.read_csv("../databases/iris/iris.data", names=columns)
 
 # plt.show()
 
-# E) gráfico de estimativa de densidade
 # fig, axes = plt.subplots(2, 2, figsize=(10, 8))
 # axes = axes.flatten()
 
