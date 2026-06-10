@@ -1,6 +1,7 @@
 import re
 import pandas as pd
 from scipy import stats
+import numpy as np
 
 df = pd.read_csv('../database/laptopPrice.csv')
 
@@ -50,18 +51,23 @@ df['rating'] = df['rating'].str.replace('s', '', regex=False)
 df['rating'] = df['rating'].str.strip()
 df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
 
+df['Price'] = df['Price'] * 0.054
+df['Price'] = df['Price'].round(2)
+
 df.to_csv('../database/laptopPrice_clean.csv', index=False, encoding='utf-8-sig')
 
+df_numeric = df.select_dtypes(include=[np.number])
+
 # print(df.sample(n=2))
-# print(df_idless.mean(numeric_only=True))
-# print(df_idless.median(numeric_only=True))
-# print(stats.trim_mean(df_clean, proportiontocut=0.1))
-# print((df_numeric_only - df_numeric_only.mean()).abs().mean())
-# print(df_idless.var(numeric_only=True))
-# print(df_idless.std(numeric_only=True))
-# print(stats.median_abs_deviation(df_clean))
-# print(df_clean.max(numeric_only=True))
-# print(df_clean.min(numeric_only=True))
+# print(df.mean(numeric_only=True))
+# print(df.median(numeric_only=True))
+# print(stats.trim_mean(df_numeric.apply(lambda x: x.fillna(x.mean()), axis=0), proportiontocut=0.1))
+# print((df_numeric - df_numeric.mean()).abs().mean())
+# print(df.var(numeric_only=True))
+# print(df.std(numeric_only=True))
+# print(stats.median_abs_deviation(df_numeric.apply(lambda x: x.fillna(x.mean()))))
+# print(df.max(numeric_only=True))
+# print(df.min(numeric_only=True))
 # print(df.max(numeric_only=True) - df.min(numeric_only=True))
 # print(df.quantile(q=0.1, numeric_only=True))
 # print(df.quantile(q=0.25, numeric_only=True))

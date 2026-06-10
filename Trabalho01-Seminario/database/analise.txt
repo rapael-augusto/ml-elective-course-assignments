@@ -1,61 +1,108 @@
 2 samples:
-    Order_ID  Distance_km Weather Traffic_Level Time_of_Day Vehicle_Type  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
-    701       641         0.89   Rainy           Low     Morning          Car                     9                     0.0                 20
-    518       984         1.97   Clear          High     Morning          Car                    28                     7.0                 43
+    brand processor_brand processor_name  processor_gnrtn  ram_gb  ... msoffice  Price  rating Number of Ratings  Number of Reviews
+    787  Lenovo             AMD        Ryzen 7              NaN       4  ...      Yes  77988       3                 0                  0
+    88       HP           Intel        Core i3             11.0       8  ...      Yes  42990       4               681                 59
 
 médias:
-    Distance_km               10.059970
-    Preparation_Time_min      16.982000
-    Courier_Experience_yrs     4.579381
-    Delivery_Time_min         56.732000
+    processor_gnrtn         10.366221
+    ram_gb                   8.680437
+    ssd                    452.121507
+    hdd                    227.071689
+    os_bit                  59.761847
+    graphic_card_gb          1.190765
+    warranty                 0.721750
+    Price                76745.177400
+    rating                   3.562576
+    Number of Ratings      315.301337
+    Number of Reviews       37.609964
 
 medianas:
-    Distance_km               10.19
-    Preparation_Time_min      17.00
-    Courier_Experience_yrs     5.00
-    Delivery_Time_min         55.50
+    processor_gnrtn         11.0
+    ram_gb                   8.0
+    ssd                    512.0
+    hdd                      0.0
+    os_bit                  64.0
+    graphic_card_gb          0.0
+    warranty                 1.0
+    Price                64990.0
+    rating                   4.0
+    Number of Ratings       17.0
+    Number of Reviews        2.0
 
 média aparada:
-    Distance_km              10.01208763
-    Preparation_Time_min     16.98324742
-    Courier_Experience_yrs   4.59149485 (tem 30 valores vazios que foram descartados)
-    Delivery_Time_min        55.64561856
+    [1.05119874e+01 8.30349014e+00 4.31004552e+02 1.54610015e+02
+    6.26889226e+01 7.92109256e-01 7.02579666e-01 6.93326449e+04
+    3.57359636e+00 8.65720789e+01 1.08831563e+01]
 
 desvio absoluto médio:
-    Distance_km                4.946691
-    Preparation_Time_min       6.258360
-    Courier_Experience_yrs     2.548224
-    Delivery_Time_min         17.796352
+    processor_gnrtn          0.724360
+    ram_gb                   3.261730
+    ssd                    226.298393
+    hdd                    342.676838
+    os_bit                   7.353685
+    graphic_card_gb          1.669676
+    warranty                 0.487598
+    Price                31346.914489
+    rating                   0.527862
+    Number of Ratings      458.218257
+    Number of Reviews       54.100450
 
 variância:
-    Distance_km                32.451884
-    Preparation_Time_min       51.905582
-    Courier_Experience_yrs      8.493692
-    Delivery_Time_min         487.125301
+    processor_gnrtn      9.259592e-01
+    ram_gb               1.911795e+01
+    ssd                  1.002752e+05
+    hdd                  1.706560e+05
+    os_bit               1.178021e+02
+    graphic_card_gb      4.108333e+00
+    warranty             3.519230e-01
+    Price                2.034172e+09
+    rating               3.218094e-01
+    Number of Ratings    1.097010e+06
+    Number of Reviews    1.481771e+04
 
 desvio padrão:
-    Distance_km                5.696656
-    Preparation_Time_min       7.204553
-    Courier_Experience_yrs     2.914394
-    Delivery_Time_min         22.070915
+    processor_gnrtn          0.962268
+    ram_gb                   4.372408
+    ssd                    316.662592
+    hdd                    413.105282
+    os_bit                  10.853667
+    graphic_card_gb          2.026902
+    warranty                 0.593231
+    Price                45101.790525
+    rating                   0.567282
+    Number of Ratings     1047.382654
+    Number of Reviews      121.728017
 
 desvio absoluto mediano da mediana:
-    Distance_km              4.95
-    Preparation_Time_min     6
-    Courier_Experience_yrs   6 (tem 30 valores vazios que foram descartados)
-    Delivery_Time_min        15
+    [3.66220736e-01 0.00000000e+00 2.56000000e+02 0.00000000e+00
+    0.00000000e+00 0.00000000e+00 0.00000000e+00 2.05000000e+04
+    0.00000000e+00 1.70000000e+01 2.00000000e+00]
 
 máximo:
-    Distance_km                 19.99
-    Preparation_Time_min        29.00
-    Courier_Experience_yrs       9.00
-    Delivery_Time_min          153.00
+    processor_gnrtn          12.0
+    ram_gb                   32.0
+    ssd                    3072.0
+    hdd                    2048.0
+    os_bit                   64.0
+    graphic_card_gb           8.0
+    warranty                  3.0
+    Price                441990.0
+    rating                    5.0
+    Number of Ratings     15279.0
+    Number of Reviews      1947.0
 
 mínimo:
-    Distance_km               0.59
-    Preparation_Time_min      5.00
-    Courier_Experience_yrs    0.00
-    Delivery_Time_min         8.00
+    processor_gnrtn          4.0
+    ram_gb                   4.0
+    ssd                      0.0
+    hdd                      0.0
+    os_bit                  32.0
+    graphic_card_gb          0.0
+    warranty                 0.0
+    Price                16990.0
+    rating                   1.0
+    Number of Ratings        0.0
+    Number of Reviews        0.0
 
 amplitude: 
     Distance_km                19.4

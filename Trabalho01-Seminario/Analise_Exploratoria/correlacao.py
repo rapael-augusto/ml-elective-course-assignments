@@ -4,25 +4,25 @@ import math as mt
 import seaborn as sns
 import numpy as np
 
-df = pd.read_csv('../database/Sao_paulo_clean.csv')
+df = pd.read_csv('../database/laptopPrice_clean.csv')
 
 columns = df.columns
 
-sns.heatmap(df.drop(columns=['Is_mensal']).corr(numeric_only=True), 
-            cmap='coolwarm', 
-            vmin=-1, 
-            vmax=1,
-            annot=True,
-            fmt='.2f',
-            center=0)
-plt.tight_layout()
-plt.show()
-
-
-# pd.plotting.scatter_matrix(df, figsize=(12, 12))
-# plt.suptitle('dispersion matrix diagram')
+# sns.heatmap(df.corr(numeric_only=True), 
+#             cmap='coolwarm', 
+#             vmin=-1, 
+#             vmax=1,
+#             annot=True,
+#             fmt='.2f',
+#             center=0)
 # plt.tight_layout()
 # plt.show()
+
+
+pd.plotting.scatter_matrix(df, figsize=(12, 12))
+plt.suptitle('dispersion matrix diagram')
+plt.tight_layout()
+plt.show()
 
 
 # plt.scatter(df_clean['Distance_km'], df_clean['Delivery_Time_min'], color='blue', marker='o')
