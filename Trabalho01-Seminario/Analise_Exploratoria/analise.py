@@ -58,27 +58,56 @@ df.to_csv('../database/laptopPrice_clean.csv', index=False, encoding='utf-8-sig'
 
 df_numeric = df.select_dtypes(include=[np.number])
 
-# print(df.sample(n=2))
-# print(df.mean(numeric_only=True))
-# print(df.median(numeric_only=True))
-# print(stats.trim_mean(df_numeric.apply(lambda x: x.fillna(x.mean()), axis=0), proportiontocut=0.1))
-# print((df_numeric - df_numeric.mean()).abs().mean())
-# print(df.var(numeric_only=True))
-# print(df.std(numeric_only=True))
-# print(stats.median_abs_deviation(df_numeric.apply(lambda x: x.fillna(x.mean()))))
-# print(df.max(numeric_only=True))
-# print(df.min(numeric_only=True))
-# print(df.max(numeric_only=True) - df.min(numeric_only=True))
-# print(df.quantile(q=0.1, numeric_only=True))
-# print(df.quantile(q=0.25, numeric_only=True))
-# print(df.quantile(q=0.75, numeric_only=True))
-# print(df.quantile(q=0.9, numeric_only=True))
-# print(df.quantile(q=0.75, numeric_only=True) - df.quantile(q=0.25, numeric_only=True))
+print(df.sample(n=2))
 
+print("Amostra (2 linhas):\n", df.sample(n=2), "\n")
 
-# iq_range = df_clean.quantile(q=0.75) - df_clean.quantile(q=0.25)
-# lower_edge = df_clean.quantile(q=0.25) - (1.5 * iq_range)
-# upper_edge = df_clean.quantile(q=0.75) + (1.5 * iq_range)
-# query = (df_clean < lower_edge) | (df_clean > upper_edge)
-# print(query.sum())
-# print(df_clean[query.any(axis=1)])
+# 2. Média
+print("Média:\n", df.mean(numeric_only=True), "\n")
+
+# 3. Mediana
+print("Mediana:\n", df.median(numeric_only=True), "\n")
+
+# 4. Média Aparada
+df_sem_nan = df_numeric.fillna(df_numeric.mean())
+print("Média Aparada:\n", stats.trim_mean(df_sem_nan, proportiontocut=0.1), "\n")
+
+# 5. Desvio Médio Absoluto
+print("Desvio Médio Absoluto:\n", (df_numeric - df_numeric.mean()).abs().mean(), "\n")
+
+# 6. Variância
+print("Variância:\n", df.var(numeric_only=True), "\n")
+
+# 7. Desvio Padrão
+print("Desvio Padrão:\n", df.std(numeric_only=True), "\n")
+
+# 8. Desvio Absoluto Mediano
+df_mediana = df_numeric.fillna(df_numeric.median())
+print("Desvio Absoluto Mediano:\n", stats.median_abs_deviation(df_mediana), "\n")
+
+# 9. Máximo
+print("Máximo:\n", df.max(numeric_only=True), "\n")
+
+# 10. Mínimo
+print("Mínimo:\n", df.min(numeric_only=True), "\n")
+
+# 11. Amplitude
+print("Amplitude:\n", df.max(numeric_only=True) - df.min(numeric_only=True), "\n")
+
+# 12. Percentis
+print("Percentil 10%:\n", df.quantile(q=0.1, numeric_only=True), "\n")
+print("Percentil 25% (Q1):\n", df.quantile(q=0.25, numeric_only=True), "\n")
+print("Percentil 75% (Q3):\n", df.quantile(q=0.75, numeric_only=True), "\n")
+print("Percentil 90%:\n", df.quantile(q=0.9, numeric_only=True), "\n")
+
+# 13. IQR
+print("IQR (Q3 - Q1):\n", df.quantile(q=0.75, numeric_only=True) - df.quantile(q=0.25, numeric_only=True), "\n")
+
+# 14. Outliers
+df_clean = df_numeric.dropna()
+iq_range = df_clean.quantile(q=0.75) - df_clean.quantile(q=0.25)
+lower_edge = df_clean.quantile(q=0.25) - (1.5 * iq_range)
+upper_edge = df_clean.quantile(q=0.75) + (1.5 * iq_range)
+query = (df_clean < lower_edge) | (df_clean > upper_edge)
+print("Outliers por coluna:\n", query.sum(), "\n")
+print("Linhas com outliers:\n", df_clean[query.any(axis=1)].head(10))

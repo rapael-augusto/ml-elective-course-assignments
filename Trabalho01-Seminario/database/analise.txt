@@ -1,329 +1,228 @@
-2 samples:
-    brand processor_brand processor_name  processor_gnrtn  ram_gb  ... msoffice  Price  rating Number of Ratings  Number of Reviews
-    787  Lenovo             AMD        Ryzen 7              NaN       4  ...      Yes  77988       3                 0                  0
-    88       HP           Intel        Core i3             11.0       8  ...      Yes  42990       4               681                 59
+    brand processor_brand processor_name  processor_gnrtn  ram_gb  ... msoffice    Price  rating Number of Ratings  Number of Reviews
+315    HP           Intel        Core i5             11.0       8  ...      Yes  4211.46       3                 0                  0
+84   ASUS           Intel   Celeron Dual              NaN       4  ...       No  1268.46       4               632                 92
 
-médias:
-    processor_gnrtn         10.366221
-    ram_gb                   8.680437
-    ssd                    452.121507
-    hdd                    227.071689
-    os_bit                  59.761847
-    graphic_card_gb          1.190765
-    warranty                 0.721750
-    Price                76745.177400
-    rating                   3.562576
-    Number of Ratings      315.301337
-    Number of Reviews       37.609964
+[2 rows x 19 columns]
+Amostra (2 linhas):
+     brand processor_brand processor_name  processor_gnrtn  ram_gb  ... msoffice    Price  rating Number of Ratings  Number of Reviews
+815  ASUS             AMD        Ryzen 9              NaN       4  ...       No  6317.46       3                 0                  0
+101   MSI           Intel        Core i3             10.0       8  ...       No  2213.46       4               118                 17
 
-medianas:
-    processor_gnrtn         11.0
-    ram_gb                   8.0
-    ssd                    512.0
-    hdd                      0.0
-    os_bit                  64.0
-    graphic_card_gb          0.0
-    warranty                 1.0
-    Price                64990.0
-    rating                   4.0
-    Number of Ratings       17.0
-    Number of Reviews        2.0
+[2 rows x 19 columns] 
 
-média aparada:
-    [1.05119874e+01 8.30349014e+00 4.31004552e+02 1.54610015e+02
-    6.26889226e+01 7.92109256e-01 7.02579666e-01 6.93326449e+04
-    3.57359636e+00 8.65720789e+01 1.08831563e+01]
+Média:
+ processor_gnrtn        10.366221
+ram_gb                  8.680437
+ssd                   452.121507
+hdd                   227.071689
+os_bit                 59.761847
+graphic_card_gb         1.190765
+warranty                0.721750
+Price                4144.239781
+rating                  3.562576
+Number of Ratings     315.301337
+Number of Reviews      37.609964
+dtype: float64 
 
-desvio absoluto médio:
-    processor_gnrtn          0.724360
-    ram_gb                   3.261730
-    ssd                    226.298393
-    hdd                    342.676838
-    os_bit                   7.353685
-    graphic_card_gb          1.669676
-    warranty                 0.487598
-    Price                31346.914489
-    rating                   0.527862
-    Number of Ratings      458.218257
-    Number of Reviews       54.100450
+Mediana:
+ processor_gnrtn        11.00
+ram_gb                  8.00
+ssd                   512.00
+hdd                     0.00
+os_bit                 64.00
+graphic_card_gb         0.00
+warranty                1.00
+Price                3509.46
+rating                  4.00
+Number of Ratings      17.00
+Number of Reviews       2.00
+dtype: float64 
 
-variância:
-    processor_gnrtn      9.259592e-01
-    ram_gb               1.911795e+01
-    ssd                  1.002752e+05
-    hdd                  1.706560e+05
-    os_bit               1.178021e+02
-    graphic_card_gb      4.108333e+00
-    warranty             3.519230e-01
-    Price                2.034172e+09
-    rating               3.218094e-01
-    Number of Ratings    1.097010e+06
-    Number of Reviews    1.481771e+04
+Média Aparada:
+ [1.05119874e+01 8.30349014e+00 4.31004552e+02 1.54610015e+02
+ 6.26889226e+01 7.92109256e-01 7.02579666e-01 3.74396302e+03
+ 3.57359636e+00 8.65720789e+01 1.08831563e+01] 
 
-desvio padrão:
-    processor_gnrtn          0.962268
-    ram_gb                   4.372408
-    ssd                    316.662592
-    hdd                    413.105282
-    os_bit                  10.853667
-    graphic_card_gb          2.026902
-    warranty                 0.593231
-    Price                45101.790525
-    rating                   0.567282
-    Number of Ratings     1047.382654
-    Number of Reviews      121.728017
+Desvio Médio Absoluto:
+ processor_gnrtn         0.724360
+ram_gb                  3.261730
+ssd                   226.298393
+hdd                   342.676838
+os_bit                  7.353685
+graphic_card_gb         1.669676
+warranty                0.487598
+Price                1692.733305
+rating                  0.527862
+Number of Ratings     458.218257
+Number of Reviews      54.100450
+dtype: float64 
 
-desvio absoluto mediano da mediana:
-    [3.66220736e-01 0.00000000e+00 2.56000000e+02 0.00000000e+00
-    0.00000000e+00 0.00000000e+00 0.00000000e+00 2.05000000e+04
-    0.00000000e+00 1.70000000e+01 2.00000000e+00]
+Variância:
+ processor_gnrtn      9.259592e-01
+ram_gb               1.911795e+01
+ssd                  1.002752e+05
+hdd                  1.706560e+05
+os_bit               1.178021e+02
+graphic_card_gb      4.108333e+00
+warranty             3.519230e-01
+Price                5.931644e+06
+rating               3.218094e-01
+Number of Ratings    1.097010e+06
+Number of Reviews    1.481771e+04
+dtype: float64 
 
-máximo:
-    processor_gnrtn          12.0
-    ram_gb                   32.0
-    ssd                    3072.0
-    hdd                    2048.0
-    os_bit                   64.0
-    graphic_card_gb           8.0
-    warranty                  3.0
-    Price                441990.0
-    rating                    5.0
-    Number of Ratings     15279.0
-    Number of Reviews      1947.0
+Desvio Padrão:
+ processor_gnrtn         0.962268
+ram_gb                  4.372408
+ssd                   316.662592
+hdd                   413.105282
+os_bit                 10.853667
+graphic_card_gb         2.026902
+warranty                0.593231
+Price                2435.496634
+rating                  0.567282
+Number of Ratings    1047.382654
+Number of Reviews     121.728017
+dtype: float64 
 
-mínimo:
-    processor_gnrtn          4.0
-    ram_gb                   4.0
-    ssd                      0.0
-    hdd                      0.0
-    os_bit                  32.0
-    graphic_card_gb          0.0
-    warranty                 0.0
-    Price                16990.0
-    rating                   1.0
-    Number of Ratings        0.0
-    Number of Reviews        0.0
+Desvio Absoluto Mediano:
+ [   0.    0.  256.    0.    0.    0.    0. 1107.    0.   17.    2.] 
 
-amplitude: 
-    Distance_km                19.4
-    Preparation_Time_min       24.0
-    Courier_Experience_yrs      9.0
-    Delivery_Time_min         145.0
+Máximo:
+ processor_gnrtn         12.00
+ram_gb                  32.00
+ssd                   3072.00
+hdd                   2048.00
+os_bit                  64.00
+graphic_card_gb          8.00
+warranty                 3.00
+Price                23867.46
+rating                   5.00
+Number of Ratings    15279.00
+Number of Reviews     1947.00
+dtype: float64 
 
-10º percentil:
-    Distance_km                 2.317
-    Preparation_Time_min        7.000
-    Courier_Experience_yrs      1.000
-    Delivery_Time_min          29.000
+Mínimo:
+ processor_gnrtn        4.00
+ram_gb                 4.00
+ssd                    0.00
+hdd                    0.00
+os_bit                32.00
+graphic_card_gb        0.00
+warranty               0.00
+Price                917.46
+rating                 1.00
+Number of Ratings      0.00
+Number of Reviews      0.00
+dtype: float64 
 
-25º percentil:
-    Distance_km                 5.105
-    Preparation_Time_min       11.000
-    Courier_Experience_yrs      2.000
-    Delivery_Time_min          41.000
+Amplitude:
+ processor_gnrtn          8.0
+ram_gb                  28.0
+ssd                   3072.0
+hdd                   2048.0
+os_bit                  32.0
+graphic_card_gb          8.0
+warranty                 3.0
+Price                22950.0
+rating                   4.0
+Number of Ratings    15279.0
+Number of Reviews     1947.0
+dtype: float64 
 
-75º percentil:
-    Distance_km                15.0175
-    Preparation_Time_min       23.0000
-    Courier_Experience_yrs      7.0000
-    Delivery_Time_min          71.0000
+Percentil 10%:
+ processor_gnrtn        10.00
+ram_gb                  4.00
+ssd                     0.00
+hdd                     0.00
+os_bit                 32.00
+graphic_card_gb         0.00
+warranty                0.00
+Price                2105.46
+rating                  3.00
+Number of Ratings       0.00
+Number of Reviews       0.00
+Name: 0.1, dtype: float64 
 
-90º percentil:
-    Distance_km                18.041
-    Preparation_Time_min       27.000
-    Courier_Experience_yrs      9.000
-    Delivery_Time_min          86.000
+Percentil 25% (Q1):
+ processor_gnrtn        10.00
+ram_gb                  4.00
+ssd                   256.00
+hdd                     0.00
+os_bit                 64.00
+graphic_card_gb         0.00
+warranty                0.00
+Price                2489.13
+rating                  3.00
+Number of Ratings       0.00
+Number of Reviews       0.00
+Name: 0.25, dtype: float64 
 
-amplitude interquartil:
-    Distance_km                 9.9125
-    Preparation_Time_min       12.0000
-    Courier_Experience_yrs      5.0000
-    Delivery_Time_min          30.0000
+Percentil 75% (Q3):
+ processor_gnrtn        11.000
+ram_gb                  8.000
+ssd                   512.000
+hdd                     0.000
+os_bit                 64.000
+graphic_card_gb         2.000
+warranty                1.000
+Price                4840.345
+rating                  4.000
+Number of Ratings     139.500
+Number of Reviews      18.000
+Name: 0.75, dtype: float64 
 
-outliers: (todos da coluna 'Delivery_Time_min')
-        Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
-    29         18.05                    10                     7.0                123
-    127        18.97                    25                     4.0                141
-    379        18.46                    29                     1.0                153
-    452        15.64                    20                     4.0                141
-    784        14.83                    19                     4.0                126
-    924        17.81                    21                     4.0                122
+Percentil 90%:
+ processor_gnrtn        11.000
+ram_gb                 16.000
+ssd                  1024.000
+hdd                  1024.000
+os_bit                 64.000
+graphic_card_gb         4.000
+warranty                1.000
+Price                7068.168
+rating                  4.000
+Number of Ratings     786.800
+Number of Reviews      92.800
+Name: 0.9, dtype: float64 
 
-tabela de frequência (3 intervalos, por Vehicle_Type):
-    Vehicle_Type     Bike  Car  Scooter
-    Distance_km                        
-    (0.571, 7.057]    182   66      102
-    (7.057, 13.523]   158   64      114
-    (13.523, 19.99]   163   65       86
-    Vehicle_Type          Bike  Car  Scooter
-    Preparation_Time_min                    
-    (4.976, 13.0]          180   70      110
-    (13.0, 21.0]           166   67       83
-    (21.0, 29.0]           157   58      109
-    Vehicle_Type            Bike  Car  Scooter
-    Courier_Experience_yrs                    
-    (-0.009, 3.0]            184   75      118
-    (3.0, 6.0]               157   60       76
-    (6.0, 9.0]               147   57       96
-    Vehicle_Type       Bike  Car  Scooter
-    Delivery_Time_min                    
-    (7.855, 56.333]     258  100      160
-    (56.333, 104.667]   231   90      135
-    (104.667, 153.0]     14    5        7
+IQR (Q3 - Q1):
+ processor_gnrtn         1.000
+ram_gb                  4.000
+ssd                   256.000
+hdd                     0.000
+os_bit                  0.000
+graphic_card_gb         2.000
+warranty                1.000
+Price                2351.215
+rating                  1.000
+Number of Ratings     139.500
+Number of Reviews      18.000
+dtype: float64 
 
-tabela de frequência (5 intervalos, por Vehicle_Type):
-    Vehicle_Type    Bike  Car  Scooter
-    Distance_km                       
-    (0.571, 4.47]    128   40       58
-    (4.47, 8.35]      86   41       70
-    (8.35, 12.23]     93   40       59
-    (12.23, 16.11]    91   33       62
-    (16.11, 19.99]   105   41       53
-    Vehicle_Type          Bike  Car  Scooter
-    Preparation_Time_min                    
-    (4.976, 9.8]           103   33       63
-    (9.8, 14.6]            102   47       64
-    (14.6, 19.4]           100   38       48
-    (19.4, 24.2]            94   38       63
-    (24.2, 29.0]           104   39       64
-    Vehicle_Type            Bike  Car  Scooter
-    Courier_Experience_yrs                    
-    (-0.009, 1.8]            106   37       55
-    (1.8, 3.6]                78   38       63
-    (3.6, 5.4]                93   37       54
-    (5.4, 7.2]               104   46       50
-    (7.2, 9.0]               107   34       68
-    Vehicle_Type       Bike  Car  Scooter
-    Delivery_Time_min                    
-    (7.855, 37.0]       111   36       66
-    (37.0, 66.0]        228   95      140
-    (66.0, 95.0]        139   52       84
-    (95.0, 124.0]        24   10       11
-    (124.0, 153.0]        1    2        1
+Outliers por coluna:
+ processor_gnrtn       51
+ram_gb               240
+ssd                   68
+hdd                  149
+os_bit                76
+graphic_card_gb       39
+warranty               9
+Price                 45
+rating                 2
+Number of Ratings    100
+Number of Reviews     99
+dtype: int64 
 
-moda:
-   Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
-          12.85                    14                     6.0                 71
-
-matriz de correlação:
-                            Order_ID  Distance_km  Preparation_Time_min  Courier_Experience_yrs  Delivery_Time_min
-    Order_ID                1.000000    -0.024483             -0.035100                0.013152          -0.036650
-    Distance_km            -0.024483     1.000000             -0.009037               -0.007842           0.780998
-    Preparation_Time_min   -0.035100    -0.009037              1.000000               -0.030830           0.307350
-    Courier_Experience_yrs  0.013152    -0.007842             -0.030830                1.000000          -0.090433
-    Delivery_Time_min      -0.036650     0.780998              0.307350               -0.090433           1.000000
-
-tabelas de correlação:
-    crosstab between Distance_km and Vehicle_Type:
-    Vehicle_Type  Bike  Car  Scooter  total
-    Distance_km                            
-    0.59             1    0        0      1
-    0.6              1    0        0      1
-    0.61             0    0        1      1
-    0.64             1    0        0      1
-    0.68             1    0        0      1
-    ...            ...  ...      ...    ...
-    19.86            1    0        0      1
-    19.93            1    0        0      1
-    19.94            1    0        0      1
-    19.99            1    0        0      1
-    total          503  195      302   1000
-
-    [786 rows x 4 columns]
-
-    crosstab between Weather and Vehicle_Type:
-    Vehicle_Type  Bike  Car  Scooter  total
-    Weather                                
-    Clear          239   77      154    470
-    Foggy           52   20       31    103
-    Rainy           98   44       62    204
-    Snowy           52   25       20     97
-    Windy           53   20       23     96
-    total          494  186      290    970
-
-    crosstab between Traffic_Level and Vehicle_Type:
-    Vehicle_Type   Bike  Car  Scooter  total
-    Traffic_Level                           
-    High            100   36       61    197
-    Low             194   87      102    383
-    Medium          199   65      126    390
-    total           493  188      289    970
-
-    crosstab between Time_of_Day and Vehicle_Type:
-    Vehicle_Type  Bike  Car  Scooter  total
-    Time_of_Day                            
-    Afternoon      140   53       91    284
-    Evening        150   50       93    293
-    Morning        140   74       94    308
-    Night           54   13       18     85
-    total          484  190      296    970
-
-    crosstab between Vehicle_Type and Vehicle_Type:
-    Vehicle_Type  Bike  Car  Scooter  total
-    Vehicle_Type                           
-    Bike           503    0        0    503
-    Car              0  195        0    195
-    Scooter          0    0      302    302
-    total          503  195      302   1000
-
-    crosstab between Preparation_Time_min and Vehicle_Type:
-    Vehicle_Type          Bike  Car  Scooter  total
-    Preparation_Time_min                           
-    5                       16    5        9     30
-    6                       21    9       14     44
-    7                       20    5       12     37
-    8                       18    8       16     42
-    9                       28    6       12     46
-    10                      21   12       14     47
-    11                      30    6       10     46
-    12                      13   11       14     38
-    13                      13    8        9     30
-    14                      25   10       17     52
-    15                      17    6        6     29
-    16                      29    9       11     49
-    17                      24    9       12     45
-    18                      17    5        6     28
-    19                      13    9       13     35
-    20                      23    8        8     39
-    21                      18   11       10     39
-    22                      19   10       13     42
-    23                      18    4       16     38
-    24                      16    5       16     37
-    25                      28   10       10     48
-    26                      23    5       12     40
-    27                      16   11       13     40
-    28                      18    6       16     40
-    29                      19    7       13     39
-    total                  503  195      302   1000
-
-    crosstab between Courier_Experience_yrs and Vehicle_Type:
-    Vehicle_Type            Bike  Car  Scooter  total
-    Courier_Experience_yrs                           
-    0.0                       49   19       23     91
-    1.0                       57   18       32    107
-    2.0                       46   15       38     99
-    3.0                       32   23       25     80
-    4.0                       43   23       28     94
-    5.0                       50   14       26     90
-    6.0                       64   23       22    109
-    7.0                       40   23       28     91
-    8.0                       53   11       37    101
-    9.0                       54   23       31    108
-    total                    488  192      290    970
-
-    crosstab between Delivery_Time_min and Vehicle_Type:
-    Vehicle_Type       Bike  Car  Scooter  total
-    Delivery_Time_min                           
-    8                     1    0        0      1
-    13                    0    0        1      1
-    14                    3    0        1      4
-    15                    1    0        0      1
-    16                    3    0        1      4
-    ...                 ...  ...      ...    ...
-    123                   0    0        1      1
-    126                   0    1        0      1
-    141                   1    1        0      2
-    153                   0    0        1      1
-    total               503  195      302   1000
-
-    [109 rows x 4 columns]
+Linhas com outliers:
+     processor_gnrtn  ram_gb  ssd   hdd  os_bit  graphic_card_gb  warranty    Price  rating  Number of Ratings  Number of Reviews
+0              10.0       4    0  1024      64                0         0  1871.05       2                  3                  0
+1              10.0       4    0  1024      64                0         0  2105.95       3                 65                  5
+2              10.0       4    0  1024      64                0         0  2159.95       3                  8                  1
+3              10.0       8  512     0      32                2         0  3779.46       3                  0                  0
+7              10.0       8    0  1024      32                2         0  3175.15       3                  0                  0
+8              10.0       4    0  1024      32                0         0  2699.95       3                  0                  0
+9              10.0       4    0   512      32                4         0  3239.46       4               1946                240
+10             10.0       4    0   512      32                6         0  5059.80       4                259                 47
+11             10.0       4    0   512      32                4         0  3941.46       4                425                 67
+14             11.0       4  256     0      64                0         0  1943.46       3                  0                  0

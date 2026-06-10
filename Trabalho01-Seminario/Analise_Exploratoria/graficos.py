@@ -2,36 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math as mt
 import seaborn as sns
+import numpy as np
 
-df = pd.read_csv('../database/Food_Delivery_Times.csv')
-df_idless = df.drop(columns=['Order_ID'])
-df_numeric_only = df_idless.drop(columns=['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
-df_clean = df_numeric_only.dropna()
+df = pd.read_csv('../database/laptopPrice_clean.csv')
+df_numeric = df.select_dtypes(include=[np.number])
 
-columns = df_numeric_only.columns
-columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
-
-
-# fig, axes = plt.subplots(2, 2, figsize=(10, 8))
-# axes = axes.flatten()
-
-# for i, var in enumerate(columns):
-#     df_clean[var].plot.box(ax=axes[i])
-
+# df["Price"].plot.box()
+# plt.ylabel("Value (1.5 IQR Factor)")
 # plt.show()
 
-# Q1 = df_clean['Delivery_Time_min'].quantile(0.25)
-# Q3 = df_clean['Delivery_Time_min'].quantile(0.75)
-# IQR = Q3 - Q1
-
-# outliers = df_clean[(df_clean['Delivery_Time_min'] < Q1 - 1.5*IQR) | 
-#                     (df_clean['Delivery_Time_min'] > Q3 + 1.5*IQR)]['Delivery_Time_min']
-
-# outliers_str = ', '.join(map(str, sorted(outliers.unique())))
-# df_clean['Delivery_Time_min'].plot.box()
-# plt.xlabel('frequency')
-# plt.title('delivery time boxplot ')
-# plt.legend([f'outliers: {outliers_str}'])
+# df["Price"].plot.box(whis=3.0)
+# plt.ylabel("Value (3.0 IQR Factor)")
 # plt.show()
 
 
@@ -43,56 +24,92 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 #    print(pd.crosstab(pd.cut(df[var], bins=5), df['Vehicle_Type']))
 
 
-# fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+# plt.figure(figsize=(10, 6))
+# sns.histplot(data=df, x='Price', stat='count', bins=30, color='steelblue', alpha=0.7)
+
+# min_val = df['Price'].min()
+# max_val = df['Price'].max()
+# margin = (max_val - min_val) * 0.05
+# plt.xlim(min_val - margin, max_val + margin)
+
+# plt.xlabel('Price', fontsize=12)
+# plt.ylabel('Frequency', fontsize=12)
+# plt.grid(True, alpha=0.3)
+# plt.tight_layout()
+# plt.show()
+
+
+# plt.figure(figsize=(10, 6))
+# sns.histplot(data=df, x='Price', stat='count', kde=True, bins=30, color='steelblue', alpha=0.7)
+
+# min_val = df['Price'].min()
+# max_val = df['Price'].max()
+# margin = (max_val - min_val) * 0.05
+# plt.xlim(min_val - margin, max_val + margin)
+
+# plt.xlabel('Price', fontsize=12)
+# plt.ylabel('Frequency', fontsize=12)
+# plt.grid(True, alpha=0.3)
+# plt.tight_layout()
+# plt.show()
+
+
+# colunas_numericas = ['ram_gb', 'ssd', 'hdd']
+
+# fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 # axes = axes.flatten()
 
-# for i, var in enumerate(columns):
-#     sns.histplot(data=df, x=var, stat='count', ax=axes[i])
-#     min_val = df[var].min()
-#     max_val = df[var].max()
-#     margin = (max_val - min_val) * 0.05
-#     axes[i].set_xlim(min_val - margin, max_val + margin)
-    
-#     axes[i].set_xlabel(var)
-#     axes[i].set_ylabel('Density')
+# for i, var in enumerate(colunas_numericas):
+#     if var in df.columns:
+#         sns.histplot(data=df, x=var, bins=20, ax=axes[i], color='steelblue', alpha=0.7)
+#         axes[i].set_xlabel(var.upper(), fontsize=12)
+#         axes[i].set_ylabel('Frequency', fontsize=12)
+#         axes[i].set_title(f'{var.upper()} distribution', fontsize=12)
+#         axes[i].grid(True, alpha=0.3)
+#     else:
+#         axes[i].text(0.5, 0.5, f'Coluna {var} não encontrada', ha='center', va='center')
+#         axes[i].set_title(f'{var.upper()} - Não disponível')
 
 # plt.tight_layout()
 # plt.show()
 
 
-# fig, axes = plt.subplots(2, 2, figsize=(10, 8))
-# axes = axes.flatten()
+# colunas = ['processor_brand', 'os', 'weight', 'warranty', 'Touchscreen', 'brand']
 
-# for i, var in enumerate(columns):
-#     sns.histplot(data=df, x=var, kde=True, stat='density', ax=axes[i])
-#     axes[i].set_xlim(mt.floor(df[var].min()), mt.ceil(df[var].max()))
-#     axes[i].set_xlabel(var)
-#     axes[i].set_ylabel('density')
-
-# plt.show()
-
-
-# fig, axes = plt.subplots(2, 2, figsize=(15, 10))
-# axes = axes.flatten()
-
-# for i, var in enumerate(columns_categoric):
-#    df[var].value_counts().plot(kind='bar', ax=axes[i], color='blue')
-#    axes[i].set_xlabel(var)
-#    axes[i].set_ylabel('frequency')
-   
-# plt.tight_layout(pad=3)
-# plt.show()
+# for var in colunas:
+#     if var in df.columns:
+#         plt.figure(figsize=(8, 8))
+#         value_counts = df[var].value_counts()
+#         if len(value_counts) > 10:
+#             value_counts = value_counts.head(10)
+#             value_counts['Others'] = df[var].value_counts().iloc[10:].sum()
+        
+#         value_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, 
+#                          colors=plt.cm.Set3(range(len(value_counts))))
+#         plt.title(f'{var.upper()} distribution', fontsize=14)
+#         plt.ylabel('') 
+#         plt.tight_layout()
+#         plt.show()
 
 
-# fig, axes = plt.subplots(2, 2, figsize=(15, 10))
-# axes = axes.flatten()
+colunas = ['processor_name']
 
-# for i, var in enumerate(columns_categoric):
-#    df[var].value_counts().plot(kind="pie", ax=axes[i], autopct='%1.1f%%')
-#    axes[i].set_xlabel(var)
-
-# plt.tight_layout()
-# plt.show()
+for var in colunas:
+    if var in df.columns:
+        plt.figure(figsize=(12, 8))
+        value_counts = df[var].value_counts().head(15) 
+        value_counts.plot(kind='barh', color='steelblue', alpha=0.7, edgecolor='black')
+        
+        plt.title(f'Top {len(value_counts)} {var.upper()}', fontsize=14)
+        plt.xlabel('Frequency', fontsize=12)
+        plt.ylabel(var.upper(), fontsize=12)
+        plt.grid(True, alpha=0.3, axis='x')
+        
+        for i, v in enumerate(value_counts):
+            plt.text(v + max(value_counts)*0.01, i, str(v), va='center', fontsize=9)
+        
+        plt.tight_layout()
+        plt.show()
 
 
 # print(df_numeric_only.mode()) 
