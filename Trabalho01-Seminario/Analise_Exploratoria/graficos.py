@@ -20,6 +20,20 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 
 # plt.show()
 
+# Q1 = df_clean['Delivery_Time_min'].quantile(0.25)
+# Q3 = df_clean['Delivery_Time_min'].quantile(0.75)
+# IQR = Q3 - Q1
+
+# outliers = df_clean[(df_clean['Delivery_Time_min'] < Q1 - 1.5*IQR) | 
+#                     (df_clean['Delivery_Time_min'] > Q3 + 1.5*IQR)]['Delivery_Time_min']
+
+# outliers_str = ', '.join(map(str, sorted(outliers.unique())))
+# df_clean['Delivery_Time_min'].plot.box()
+# plt.xlabel('frequency')
+# plt.title('delivery time boxplot ')
+# plt.legend([f'outliers: {outliers_str}'])
+# plt.show()
+
 
 # for var in columns:
 #     print(pd.crosstab(pd.cut(df[var], bins=3), df['Vehicle_Type']))
@@ -33,11 +47,16 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 # axes = axes.flatten()
 
 # for i, var in enumerate(columns):
-#     sns.histplot(data=df, x=var, stat='density', ax=axes[i])
-#     axes[i].set_xlim(mt.floor(df[var].min()), mt.ceil(df[var].max()))
+#     sns.histplot(data=df, x=var, stat='count', ax=axes[i])
+#     min_val = df[var].min()
+#     max_val = df[var].max()
+#     margin = (max_val - min_val) * 0.05
+#     axes[i].set_xlim(min_val - margin, max_val + margin)
+    
 #     axes[i].set_xlabel(var)
-#     axes[i].set_ylabel('frequency')
+#     axes[i].set_ylabel('Density')
 
+# plt.tight_layout()
 # plt.show()
 
 

@@ -14,9 +14,15 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 # print(df.corr(numeric_only=True))
 
 
-# sns.heatmap(df.corr(numeric_only=True), cmap='coolwarm')
-# plt.tight_layout()
-# plt.show()
+sns.heatmap(df_idless.corr(numeric_only=True), 
+            cmap='coolwarm', 
+            vmin=-1, 
+            vmax=1,
+            annot=True,
+            fmt='.2f',
+            center=0)
+plt.tight_layout()
+plt.show()
 
 
 # pd.plotting.scatter_matrix(df_idless, figsize=(12, 12))
@@ -24,6 +30,11 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 # plt.tight_layout()
 # plt.show()
 
+# plt.scatter(df_clean['Distance_km'], df_clean['Delivery_Time_min'], color='blue', marker='o')
+# plt.title('Distance vs Delivery Time')
+# plt.xlabel('Distance (Km)')
+# plt.ylabel('Delivery Time (Min)')
+# plt.show()
 
 # sns.pairplot(df_idless, hue='Vehicle_Type', diag_kind='hist')
 # plt.tight_layout()
@@ -69,17 +80,17 @@ columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
 #     print(f"\ncrosstab between {var} and Vehicle_Type:")
 #     print(pd.crosstab(df[var], df["Vehicle_Type"], margins=True, margins_name="total"))
 
-fig, axes = plt.subplots(2, 2, figsize=(25, 18))
-axes = axes.flatten()
+# fig, axes = plt.subplots(2, 2, figsize=(25, 18))
+# axes = axes.flatten()
 
-for i, var in enumerate(columns):
-    sns.violinplot(data=df, x='Vehicle_Type', y=var, ax=axes[i])
-    axes[i].set_ylabel('value')
-    axes[i].set_title(var)
-    axes[i].grid(True, axis='y')
+# for i, var in enumerate(columns):
+#     sns.violinplot(data=df, x='Vehicle_Type', y=var, ax=axes[i])
+#     axes[i].set_ylabel('value')
+#     axes[i].set_title(var)
+#     axes[i].grid(True, axis='y')
 
-for i in range(len(columns), len(axes)):
-    fig.delaxes(axes[i])
+# for i in range(len(columns), len(axes)):
+#     fig.delaxes(axes[i])
 
-plt.tight_layout(pad=1)
-plt.show()
+# plt.tight_layout(pad=1)
+# plt.show()
