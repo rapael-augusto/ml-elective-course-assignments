@@ -2,59 +2,55 @@ import re
 import pandas as pd
 from scipy import stats
 
-df = pd.read_csv('../database/Sao_paulo.csv')
+df = pd.read_csv('../database/laptopPrice.csv')
 
-# If it's rent or not
-df['Is_mensal'] = df['Price'].str.contains('/M[eê]s', case=False, na=False)
+df['processor_gnrtn'] = df['processor_gnrtn'].astype(str)
+df['processor_gnrtn'] = df['processor_gnrtn'].str.replace(r'(st|nd|rd|th)', '', regex=True)
+df['processor_gnrtn'] = df['processor_gnrtn'].str.strip()
+df['processor_gnrtn'] = df['processor_gnrtn'].replace('Not Available', None)
+df['processor_gnrtn'] = df['processor_gnrtn'].replace('nan', None)
+df['processor_gnrtn'] = pd.to_numeric(df['processor_gnrtn'], errors='coerce')
 
-# Changing the prices to int
-df['Price'] = df['Price'].str.replace('R$', '', regex=False)
-df['Price'] = df['Price'].str.strip()
-df['Price'] = df['Price'].str.replace(r'[^\d,.]', '', regex=True)
-df['Price'] = df['Price'].str.replace('.', '', regex=False)
-df['Price'] = df['Price'].str.replace(',', '.', regex=False)
-df['Price'] = pd.to_numeric(df['Price'], errors='coerce')
+df['ram_gb'] = df['ram_gb'].astype(str)
+df['ram_gb'] = df['ram_gb'].str.replace('GB', '', regex=False)
+df['ram_gb'] = df['ram_gb'].str.replace('Gb', '', regex=False)
+df['ram_gb'] = df['ram_gb'].str.strip()
+df['ram_gb'] = pd.to_numeric(df['ram_gb'], errors='coerce')
 
-# Adjusting some columns to have int numbers and not intervals
-df['Rooms'] = df['Rooms'].apply(lambda x: int(str(x).split('-')[-1].strip()) if pd.notna(x) else None)
-df['Bathrooms'] = df['Bathrooms'].apply(lambda x: int(str(x).split('-')[-1].strip()) if pd.notna(x) else None)
-df['Parking_spaces'] = df['Parking_spaces'].apply(lambda x: int(str(x).split('-')[-1].strip()) if pd.notna(x) else None)
-df['Area_detail'] = df['Area_detail'].apply(lambda x: int(str(x).split('-')[-1].strip()) if pd.notna(x) else None)
+for col in ['ssd', 'hdd']:
+    if col in df.columns:
+        df[col] = df[col].astype(str)
+        df[col] = df[col].str.replace('GB', '', regex=False)
+        df[col] = df[col].str.replace('Gb', '', regex=False)
+        df[col] = df[col].str.strip()
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+        df[col] = df[col].fillna(0).astype(int)
 
-# Adjusting Street/City columns and creating a "Neighborhood", to better specify each messy category
-df['Street'] = df['Street'].astype(str)
-df['Street'] = df['Street'].str.replace(r'\d+', '', regex=True)
-df['Street'] = df['Street'].str.replace(r',\s*$', '', regex=True)
-df['Street'] = df['Street'].str.strip()
-df['Street'] = df['Street'].str.replace(r',$', '', regex=True)
-df['City'] = df['City'].replace('SP', 'São Paulo')
-df['City'] = df['City'].str.replace(' Sp ', ' São Paulo ', case=False)
-df['City'] = df['City'].str.replace('^SP$', 'São Paulo', regex=True, case=False)
-df['Street'] = df['Street'].str.replace(r'\s*\([^)]*\)', '', regex=True)
-df['City'] = df['City'].str.replace(r'\s*\([^)]*\)', '', regex=True)
-df['Neighborhood'] = None
-mask1 = df['Street'].str.contains(', São Paulo', na=False)
-df.loc[mask1, 'Neighborhood'] = df.loc[mask1, 'Street'].str.split(',').str[0].str.strip()
-df.loc[mask1, 'Street'] = None
-mask2 = df['City'].str.contains(',', na=False)
-df.loc[mask2, 'Neighborhood'] = df.loc[mask2, 'City'].str.split(',').str[0].str.strip()
-df.loc[mask2, 'City'] = df.loc[mask2, 'City'].str.split(',').str[-1].str.strip()
-df['City'] = df['City'].str.strip()
-df.loc[df['City'] == 'SP', 'City'] = 'São Paulo'
-df.loc[df['City'] == 'Sp', 'City'] = 'São Paulo'
-df.loc[df['City'] == '', 'City'] = 'São Paulo'
-df['City'] = df['City'].fillna('São Paulo')
-df['Street'] = df['Street'].str.replace(r',\s*,', ',', regex=True)
-df['Street'] = df['Street'].str.replace(r'^\s*,', '', regex=True)
-df['Street'] = df['Street'].str.replace(r',$', '', regex=True)
-df['Street'] = df['Street'].str.strip()
-df['Street'] = df['Street'].replace('', None)
-df['Street'] = df['Street'].replace('nan', None)
+df['os_bit'] = df['os_bit'].astype(str)
+df['os_bit'] = df['os_bit'].str.replace('-bit', '', regex=False)
+df['os_bit'] = df['os_bit'].str.strip()
+df['os_bit'] = pd.to_numeric(df['os_bit'], errors='coerce')
 
-# Save everything
-df.to_csv('../database/Sao_paulo_clean.csv', index=False, encoding='utf-8-sig')
+df['graphic_card_gb'] = df['graphic_card_gb'].astype(str)
+df['graphic_card_gb'] = df['graphic_card_gb'].str.replace('GB', '', regex=False)
+df['graphic_card_gb'] = df['graphic_card_gb'].str.replace('Gb', '', regex=False)
+df['graphic_card_gb'] = df['graphic_card_gb'].str.strip()
+df['graphic_card_gb'] = pd.to_numeric(df['graphic_card_gb'], errors='coerce')
+df['graphic_card_gb'] = df['graphic_card_gb'].fillna(0).astype(int)
 
-print(df['Is_mensal'].mean() * 100)
+df['warranty'] = df['warranty'].astype(str)
+df['warranty'] = df['warranty'].str.extract(r'(\d+)')
+df['warranty'] = pd.to_numeric(df['warranty'], errors='coerce')
+df['warranty'] = df['warranty'].fillna(0).astype(int)
+
+df['rating'] = df['rating'].astype(str)
+df['rating'] = df['rating'].str.replace('stars', '', regex=False)
+df['rating'] = df['rating'].str.replace('star', '', regex=False)
+df['rating'] = df['rating'].str.replace('s', '', regex=False)
+df['rating'] = df['rating'].str.strip()
+df['rating'] = pd.to_numeric(df['rating'], errors='coerce')
+
+df.to_csv('../database/laptopPrice_clean.csv', index=False, encoding='utf-8-sig')
 
 # print(df.sample(n=2))
 # print(df_idless.mean(numeric_only=True))

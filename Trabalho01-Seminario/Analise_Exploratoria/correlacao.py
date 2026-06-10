@@ -2,19 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import math as mt
 import seaborn as sns
+import numpy as np
 
-df = pd.read_csv('../database/Food_Delivery_Times.csv')
-df_idless = df.drop(columns=['Order_ID'])
-df_numeric_only = df_idless.drop(columns=['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type'])
-df_clean = df_numeric_only.dropna()
+df = pd.read_csv('../database/Sao_paulo_clean.csv')
 
-columns = df_numeric_only.columns
-columns_categoric = ['Weather', 'Traffic_Level', 'Time_of_Day', 'Vehicle_Type']
+columns = df.columns
 
-# print(df.corr(numeric_only=True))
-
-
-sns.heatmap(df_idless.corr(numeric_only=True), 
+sns.heatmap(df.drop(columns=['Is_mensal']).corr(numeric_only=True), 
             cmap='coolwarm', 
             vmin=-1, 
             vmax=1,
@@ -25,10 +19,11 @@ plt.tight_layout()
 plt.show()
 
 
-# pd.plotting.scatter_matrix(df_idless, figsize=(12, 12))
+# pd.plotting.scatter_matrix(df, figsize=(12, 12))
 # plt.suptitle('dispersion matrix diagram')
 # plt.tight_layout()
 # plt.show()
+
 
 # plt.scatter(df_clean['Distance_km'], df_clean['Delivery_Time_min'], color='blue', marker='o')
 # plt.title('Distance vs Delivery Time')
