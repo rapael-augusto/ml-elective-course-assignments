@@ -16,14 +16,6 @@ df_numeric = df.select_dtypes(include=[np.number])
 # plt.show()
 
 
-# for var in columns:
-#     print(pd.crosstab(pd.cut(df[var], bins=3), df['Vehicle_Type']))
-
-
-# for var in columns:
-#    print(pd.crosstab(pd.cut(df[var], bins=5), df['Vehicle_Type']))
-
-
 # plt.figure(figsize=(10, 6))
 # sns.histplot(data=df, x='Price', stat='count', bins=30, color='steelblue', alpha=0.7)
 
@@ -92,33 +84,44 @@ df_numeric = df.select_dtypes(include=[np.number])
 #         plt.show()
 
 
-colunas = ['processor_name']
+# colunas = ['processor_name']
 
-for var in colunas:
-    if var in df.columns:
-        plt.figure(figsize=(12, 8))
-        value_counts = df[var].value_counts().head(15) 
-        value_counts.plot(kind='barh', color='steelblue', alpha=0.7, edgecolor='black')
+# for var in colunas:
+#     if var in df.columns:
+#         plt.figure(figsize=(12, 8))
+#         value_counts = df[var].value_counts().head(15) 
+#         value_counts.plot(kind='barh', color='steelblue', alpha=0.7, edgecolor='black')
         
-        plt.title(f'Top {len(value_counts)} {var.upper()}', fontsize=14)
-        plt.xlabel('Frequency', fontsize=12)
-        plt.ylabel(var.upper(), fontsize=12)
-        plt.grid(True, alpha=0.3, axis='x')
+#         plt.title(f'Top {len(value_counts)} {var.upper()}', fontsize=14)
+#         plt.xlabel('Frequency', fontsize=12)
+#         plt.ylabel(var.upper(), fontsize=12)
+#         plt.grid(True, alpha=0.3, axis='x')
         
-        for i, v in enumerate(value_counts):
-            plt.text(v + max(value_counts)*0.01, i, str(v), va='center', fontsize=9)
+#         for i, v in enumerate(value_counts):
+#             plt.text(v + max(value_counts)*0.01, i, str(v), va='center', fontsize=9)
         
-        plt.tight_layout()
-        plt.show()
+#         plt.tight_layout()
+#         plt.show()
 
 
 # print(df_numeric_only.mode()) 
 
 
-# count = df['Weather'].value_counts()
-# plt.figure(figsize=(6, 4))
-# plt.bar(count.index, count.values)
-# plt.ylim(120, 450)
-# plt.title('wheater distribution')
-# plt.ylabel('frequency')
+# plt.figure(figsize=(12, 6))
+# sns.boxplot(data=df, x='brand', y='Price', palette='Set2')
+# plt.title('Price vs Brand', fontsize=14)
+# plt.xlabel('Brand', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.tight_layout()
 # plt.show()
+
+
+plt.figure(figsize=(12, 6))
+sns.boxplot(data=df, x='processor_gnrtn', y='Price', palette='Set2')
+plt.title('Price vs Processor generation', fontsize=14)
+plt.xlabel('Processor generation', fontsize=12)
+plt.ylabel('Price', fontsize=12)
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()

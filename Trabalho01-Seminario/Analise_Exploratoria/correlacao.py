@@ -24,21 +24,21 @@ n_colunas = len(colunas)
 # plt.show()
 
 
-colunas_principais = ['Price', 'ram_gb', 'ssd', 'processor_gnrtn', 'rating']
-colunas_plot = colunas_principais + ['os'] 
-df_plot = df[colunas_principais]
+# colunas_principais = ['Price', 'ram_gb', 'ssd', 'processor_gnrtn', 'rating']
+# colunas_plot = colunas_principais + ['os'] 
+# df_plot = df[colunas_principais]
 
-scatter_matrix(df_plot, 
-               figsize=(15, 15),
-               alpha=0.5, 
-               diagonal='hist',
-               density_kwds={'color': 'blue', 'alpha': 0.5},
-               hist_kwds={'color': 'blue', 'alpha': 0.5},
-               marker='.',
-               s=30)
-plt.suptitle('Dispersion matrix', y=0.98, fontsize=14)
-plt.tight_layout()
-plt.show()
+# scatter_matrix(df_plot, 
+#                figsize=(15, 15),
+#                alpha=0.5, 
+#                diagonal='hist',
+#                density_kwds={'color': 'blue', 'alpha': 0.5},
+#                hist_kwds={'color': 'blue', 'alpha': 0.5},
+#                marker='.',
+#                s=30)
+# plt.suptitle('Dispersion matrix', y=0.98, fontsize=14)
+# plt.tight_layout()
+# plt.show()
 
 
 # plt.scatter(df['Price'], df['ram_gb'], color='blue', marker='o')
@@ -60,19 +60,13 @@ plt.show()
 # plt.show()
 
 
-# fig, axes = plt.subplots(3, 4, figsize=(12, 10))
-# axes = axes.flatten()
-
-# p_index = 0
-# for i, var_x in enumerate(columns):
-#    for j, var_y in enumerate(columns):
-#        if i != j:
-#            axes[p_index].hexbin(df[var_x], df[var_y], mincnt=1)
-#            axes[p_index].set_xlabel(var_x)
-#            axes[p_index].set_ylabel(var_y)
-#            p_index += 1
-            
-# plt.suptitle('hexagonal graphs')
+# plt.figure(figsize=(10, 6))
+# hb = plt.hexbin(df['Number of Ratings'], df['Price'], gridsize=30, cmap='viridis', mincnt=1)
+# plt.colorbar(hb, label='count')
+# plt.xlabel('Number of ratings', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.title('Hexbin plot', fontsize=14)
+# plt.grid(True, alpha=0.3)
 # plt.tight_layout()
 # plt.show()
 
@@ -103,21 +97,62 @@ plt.show()
 # plt.show()
 
 
-# for var in df.columns[1:]:
-#     print(f"\ncrosstab between {var} and Vehicle_Type:")
-#     print(pd.crosstab(df[var], df["Vehicle_Type"], margins=True, margins_name="total"))
-
-# fig, axes = plt.subplots(2, 2, figsize=(25, 18))
-# axes = axes.flatten()
-
-# for i, var in enumerate(columns):
-#     sns.violinplot(data=df, x='Vehicle_Type', y=var, ax=axes[i])
-#     axes[i].set_ylabel('value')
-#     axes[i].set_title(var)
-#     axes[i].grid(True, axis='y')
-
-# for i in range(len(columns), len(axes)):
-#     fig.delaxes(axes[i])
-
-# plt.tight_layout(pad=1)
+# plt.figure(figsize=(14, 8))
+# sns.violinplot(data=df, x='brand', y='Price', palette='Set2')
+# plt.title('Violin plot', fontsize=14)
+# plt.xlabel('Brand', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.grid(True, alpha=0.3, axis='y')
+# plt.tight_layout()
 # plt.show()
+
+# plt.figure(figsize=(14, 8))
+# sns.violinplot(data=df, x='processor_gnrtn', y='Price', palette='Set2')
+# plt.title('Violin plot', fontsize=14)
+# plt.xlabel('Processor generation', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.grid(True, alpha=0.3, axis='y')
+# plt.tight_layout()
+# plt.show()
+
+# plt.figure(figsize=(14, 8))
+# sns.violinplot(data=df, x='ram_gb', y='Price', palette='Set2')
+# plt.title('Violin plot', fontsize=14)
+# plt.xlabel('RAM', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.grid(True, alpha=0.3, axis='y')
+# plt.tight_layout()
+# plt.show()
+
+# plt.figure(figsize=(14, 8))
+# sns.violinplot(data=df, x='ssd', y='Price', palette='Set2')
+# plt.title('Violin plot', fontsize=14)
+# plt.xlabel('SSD', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.grid(True, alpha=0.3, axis='y')
+# plt.tight_layout()
+# plt.show()
+
+# plt.figure(figsize=(14, 8))
+# sns.violinplot(data=df, x='hdd', y='Price', palette='Set2')
+# plt.title('Violin plot', fontsize=14)
+# plt.xlabel('HDD', fontsize=12)
+# plt.ylabel('Price', fontsize=12)
+# plt.xticks(rotation=45, ha='right')
+# plt.grid(True, alpha=0.3, axis='y')
+# plt.tight_layout()
+# plt.show()
+
+plt.figure(figsize=(14, 8))
+sns.violinplot(data=df, x='rating', y='Price', palette='Set2')
+plt.title('Violin plot', fontsize=14)
+plt.xlabel('Rating', fontsize=12)
+plt.ylabel('Price', fontsize=12)
+plt.xticks(rotation=45, ha='right')
+plt.grid(True, alpha=0.3, axis='y')
+plt.tight_layout()
+plt.show()

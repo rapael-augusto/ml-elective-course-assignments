@@ -1,0 +1,214 @@
+Para a regressão linear foi necessário um novo processo de modificação do arquivo csv:
+
+As colunas numericas são: ['processor_gnrtn', 'ram_gb', 'ssd', 'hdd', 'os_bit', 'graphic_card_gb', 'warranty', 'Price', 'rating', 'Number of Ratings', 'Number of Reviews']
+Com as categoricas sendo: ['brand', 'processor_brand', 'processor_name', 'ram_type', 'os', 'weight', 'Touchscreen', 'msoffice']
+
+Definimos uma regra de que, para alguma coluna categórica, caso o número de valores únicos seja maior que 5, será utilizado target_encoder,
+caso contrário, one-hot-encoding.
+
+Colunas de one-hot-encoding: ['processor_brand', 'os', 'weight', 'Touchscreen', 'msoffice']
+Colunas de target encoder: ['brand', 'processor_name', 'ram_type']
+
+O one-hot-encoding utilizado foi o da biblioteca pandas: pd.get_dummies, com drop_first=True para evitar colinearidade. Com isso foram criadas
+n-1 colunas relacionadas a uma coluna de one-hot-encoding, onde n é o número de valores únicos daquela coluna específica.
+
+O target encoder utilizado foi da biblioteca category_encoders, onde cada categoria foi substituida pelo valor média da variável alvo de 'Price'.
+
+Antes da transformação, o conjunto de dados foi dividido em treino e teste, com uma proporção de 8/2.
+
+Colunas finais: ['processor_gnrtn', 'ram_gb', 'ssd', 'hdd', 'os_bit', 'graphic_card_gb', 'warranty', 'Price', 'rating', 'Number of Ratings', 'Number of Reviews', 'processor_brand_Intel', 'processor_brand_M1', 'os_Mac', 'os_Windows', 'weight_Gaming', 'weight_ThinNlight', 'Touchscreen_Yes', 'msoffice_Yes', 'brand', 'processor_name', 'ram_type']
+
+Existiam também 182 valores NaN da coluna 'processor_gnrtn', que eram os notebooks com a geração do processador não informada, eles foram inicialmente substituidos pela moda desse coluna que era 11.0.
+
+    Regressão linear utilizando scklearn-linear_model:
+
+                        Variável  Coeficiente
+    0         (processor_gnrtn,)  -215.366054
+    1                  (ram_gb,)    59.074966
+    2                     (ssd,)     3.977929
+    3                     (hdd,)     1.022021
+    4                  (os_bit,)   -16.089832
+    5         (graphic_card_gb,)   272.093062
+    6                (warranty,)    98.044802
+    7                  (rating,)  -158.945599
+    8       (Number of Ratings,)    -0.696325
+    9       (Number of Reviews,)     4.763965
+    10  (processor_brand_Intel,)    73.086580
+    11     (processor_brand_M1,)   313.818298
+    12                 (os_Mac,)  1092.628944
+    13             (os_Windows,) -2977.228057
+    14          (weight_Gaming,)  -808.877503
+    15      (weight_ThinNlight,)   278.360048
+    16        (Touchscreen_Yes,)  1096.912520
+    17           (msoffice_Yes,)  -200.082806
+    18                  (brand,)    -0.034618
+    19         (processor_name,)     0.373795
+    20               (ram_type,)     0.219626
+    Intercepto:  5375.937266963492
+
+    RSME: 1581.0407131209447, o modelo erra aproximadamente 1581R$ por laptop
+    R²: 0.5601245052619684, o modelo consegue explicar aproximadamente 56% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0007381609273742772 < 0.05, ou seja, há heterocedasticidade
+
+    Regressão linear com seleção progressiva utilizando SequentialFeatureSelection do scklearn:
+
+                    Variável  Coeficiente
+    0    processor_gnrtn  -236.447618
+    1             ram_gb    57.773941
+    2                ssd     4.034245
+    3                hdd     1.040809
+    4    graphic_card_gb   238.454473
+    5  Number of Ratings    -0.150601
+    6         os_Windows -3736.504788
+    7      weight_Gaming  -988.784806
+    8    Touchscreen_Yes  1049.793144
+    9     processor_name     0.391624
+    Intercepto:  5702.906542743098
+
+    RSME: 1589.8780270660916, o modelo erra aproximadamente 1589.80$ por laptop
+    R²: 0.5551933456785686, o modelo consegue explicar aproximadamente 55% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0000484488256686805 < 0.05, ou seja, há heterocedasticidade
+
+    Regressão linear com eliminação regressiva utilizando SequentialFeatureSelection do scklearn:
+
+                 Variável  Coeficiente
+    0     processor_gnrtn  -236.508667
+    1              ram_gb    60.820379
+    2                 ssd     4.066720
+    3                 hdd     1.025700
+    4     graphic_card_gb   239.073892
+    5              rating  -200.566122
+    6   Number of Ratings    -0.133362
+    7          os_Windows -3795.244054
+    8       weight_Gaming  -938.902054
+    9     Touchscreen_Yes  1053.151209
+    10     processor_name     0.375687
+    Intercepto:  6489.962554578301
+
+    RSME: 1572.072699539113, o modelo erra aproximadamente 1572.07$ por laptop
+    R²: 0.5651004953949659, o modelo consegue explicar aproximadamente 57% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.00003685856877754141 < 0.05, ou seja, há heterocedasticidade
+
+
+    Regressão não-linear utilizando LinearGAM do pygam: (feita com valores NaN removidos)
+    processor_gnrtn -1697.8328594136792
+    ram_gb -1228.5418791877148
+    ssd -762.9021988384388
+    hdd -319.17045590278053
+    os_bit 80.74538898645733
+    graphic_card_gb 414.9373831231403
+    warranty 661.4975717957325
+    rating 798.5179899877023
+    Number of Ratings 813.278099785993
+    Number of Reviews 817.7860768362978
+    processor_brand_Intel 1002.7511563356759
+    processor_brand_M1 1303.5230823227505
+    os_Mac 1403.3471976236629
+    os_Windows 1211.61361918599
+    weight_Gaming 965.9715008917935
+    weight_ThinNlight 800.2631452236187
+    Touchscreen_Yes 599.682484676246
+    msoffice_Yes 272.5238887424946
+    brand -130.1478900151178
+    processor_name -545.4051907518733
+    ram_type -942.4042556754991
+
+    RSME: 1432.4381012244016, o modelo erra aproximadamente 1432.44$ por laptop
+    R²: 0.6817058030361179, o modelo consegue explicar aproximadamente 68% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.03362109522062832 < 0.05, ou seja, há heterocedasticidade
+
+Nas regressões a seguir foram removidos 1% dos menos e maiores valores:
+
+    Regressão linear utilizando scklearn-linear_model:
+
+                    Variável  Coeficiente
+    0         processor_gnrtn  -181.645215
+    1                  ram_gb    71.288146
+    2                     ssd     2.726511
+    3                     hdd     0.589548
+    4                  os_bit    -9.692663
+    5         graphic_card_gb   303.629644
+    6                warranty    85.571323
+    7                  rating  -242.697245
+    8       Number of Ratings    -0.198330
+    9   processor_brand_Intel   237.135228
+    10     processor_brand_M1     0.271287
+    11                 os_Mac  2397.212396
+    12             os_Windows -1880.979908
+    13          weight_Gaming  -864.493364
+    14      weight_ThinNlight   322.117972
+    15        Touchscreen_Yes  1046.576500
+    16           msoffice_Yes  -197.084374
+    17                  brand    -0.106123
+    18         processor_name     0.356861
+    19               ram_type     0.604553
+    Intercepto:  2955.0972929928384
+
+    RSME: 1065.503997168131, o modelo erra aproximadamente 1065.50R$ por laptop
+    R²: 0.6335734099379879, o modelo consegue explicar aproximadamente 63% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0015493783183768775 > 0.05, ou seja, há heterocedasticidade
+
+    Regressão linear com seleção progressiva utilizando SequentialFeatureSelection do scklearn:
+
+            Variável  Coeficiente
+    0           ram_gb    41.845687
+    1              ssd     2.897575
+    2              hdd     0.670219
+    3  graphic_card_gb   220.162625
+    4           rating  -329.044198
+    5       os_Windows -3042.048654
+    6    weight_Gaming  -832.743002
+    7  Touchscreen_Yes   840.994534
+    8   processor_name     0.517314
+    9         ram_type     0.345156
+    Intercepto:  2487.0153799683003
+
+    RSME: 1024.761079621483, o modelo erra aproximadamente 1024.76$ por laptop
+    R²: 0.6655181963389079, o modelo consegue explicar aproximadamente 67% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0031468057924871804 < 0.05, ou seja, há heterocedasticidade
+
+    Regressão linear com eliminação regressiva utilizando SequentialFeatureSelection do scklearn: (teve o mesmo resultado do anterior)
+
+            Variável  Coeficiente
+    0           ram_gb    41.845687
+    1              ssd     2.897575
+    2              hdd     0.670219
+    3  graphic_card_gb   220.162625
+    4           rating  -329.044198
+    5       os_Windows -3042.048654
+    6    weight_Gaming  -832.743002
+    7  Touchscreen_Yes   840.994534
+    8   processor_name     0.517314
+    9         ram_type     0.345156
+    Intercepto:  2487.0153799683003
+
+    RSME: 1024.761079621483, o modelo erra aproximadamente 1024.76$ por laptop
+    R²: 0.6655181963389079, o modelo consegue explicar aproximadamente 67% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0031468057924871804 < 0.05, ou seja, há heterocedasticidade
+
+
+    Regressão não-linear utilizando LinearGAM do pygam: (feita com valores NaN removidos)
+    processor_gnrtn -1422.3436344397546
+    ram_gb -1039.9170287705906
+    ssd -661.0383673149079
+    hdd -303.44748661070247
+    os_bit 11.56781368312404
+    graphic_card_gb 262.71974144382295
+    warranty 428.7205042616614
+    rating 488.2823032020192
+    Number of Ratings 429.29540292167127
+    processor_brand_Intel 364.25159181662883
+    processor_brand_M1 485.19253937742127
+    os_Mac 750.4294783741884
+    os_Windows 886.4439144892918
+    weight_Gaming 785.3624692751545
+    weight_ThinNlight 583.1372183905321
+    Touchscreen_Yes 404.7342656173484
+    msoffice_Yes 318.82525384031896
+    brand 356.60077646228996
+    processor_name 463.55594436059687
+    ram_type 582.0410454203029
+
+    RSME: 911.7757910853395, o modelo erra aproximadamente 911.77$ por laptop
+    R²: 0.7352089113794643, o modelo consegue explicar aproximadamente 73% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0003717728449413568 < 0.05, ou seja, há heterocedasticidade
