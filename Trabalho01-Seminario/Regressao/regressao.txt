@@ -212,3 +212,105 @@ Nas regressões a seguir foram removidos 1% dos menos e maiores valores:
     RSME: 911.7757910853395, o modelo erra aproximadamente 911.77$ por laptop
     R²: 0.7352089113794643, o modelo consegue explicar aproximadamente 73% da variabilidade de preço
     Teste de Breusch–Pagan: 0.0003717728449413568 < 0.05, ou seja, há heterocedasticidade
+
+
+Identificação de preditoras correlacionadas (cuja correção é maior que 0.9):
+Com o modelo de regressão padrão do sklearn, a coluna identificada foi 'os_Mac',
+    Coeficientes antes:
+                    Variável  Coeficiente
+    11                 os_Mac  2381.759624
+    12             os_Windows -2117.685207
+    10     processor_brand_M1  -966.774484
+    15        Touchscreen_Yes   952.000783
+    13          weight_Gaming  -764.571462
+    7                  rating  -296.003662
+    5         graphic_card_gb   255.582581
+    14      weight_ThinNlight   181.630575
+    16           msoffice_Yes  -152.761877
+    0         processor_gnrtn  -149.991102
+    6                warranty   109.885448
+    1                  ram_gb    41.318974
+    9   processor_brand_Intel   -16.538273
+    4                  os_bit    -8.230644
+    2                     ssd     2.853344
+    3                     hdd     0.672874
+    18         processor_name     0.487830
+    19               ram_type     0.349484
+    8       Number of Ratings    -0.123110
+    17                  brand    -0.054347
+    Intercepto: 3769.488891201067
+
+    Depois:
+                    Variável  Coeficiente
+    11             os_Windows -2620.442166
+    14        Touchscreen_Yes   924.947511
+    12          weight_Gaming  -732.719021
+    10     processor_brand_M1   692.380773
+    7                  rating  -291.508456
+    5         graphic_card_gb   238.050954
+    0         processor_gnrtn  -165.893308
+    13      weight_ThinNlight   157.172933
+    15           msoffice_Yes  -147.277638
+    6                warranty   123.979031
+    1                  ram_gb    44.688662
+    9   processor_brand_Intel   -17.979123
+    4                  os_bit    -6.281200
+    2                     ssd     3.016919
+    3                     hdd     0.712950
+    17         processor_name     0.463202
+    18               ram_type     0.356093
+    8       Number of Ratings    -0.126174
+    16                  brand     0.034392
+    Intercepto: 3932.64212306957
+
+Variável de confundimento: (foram escolhidas as variáveis ssd e ram_gb)
+
+Intercepto: 1114.1338431525573
+Coeficiente ssd: 2.8533444178348586
+
+Intercepto: 3769.488891201067
+Coeficiente ram_gb (sem ssd): 49.17460422245594
+Coeficiente ram_gb (com ssd): 41.31897370315042
+Mudança percentual: 15.97%
+
+
+Par de variáveis com interações: (novamente, ram_gb e ssd):
+    Coeficiente ram_gb: 156.55201791327946
+    Coeficiente ssd: 3.6378430524786958
+    Intercepto: 1055.7084120429531
+
+    Coeficiente ram_gb: 138.20015255053497
+    Coeficiente ssd: 3.3516276710659385
+    Coeficiente ram_gb_ssd: 0.031175128280462882
+    Intercepto: 1207.0461662438943
+    Mudança percentual: 11.72%
+
+    Para cada aumento simultâneo de 1 GB de RAM e 1 GB de SSD, o preço aumenta aproximadamente 0.03 reais adicionais além dos efeitos individuais da RAM e do SSD.
+
+
+Regressão sem valores influentes (cook):
+                    Variável  Coef_Original  Coef_Sem_Influentes    Diferença  Diferença_%
+    9   processor_brand_Intel     -16.538273          -128.539274  -112.001000   677.223068
+    10     processor_brand_M1    -966.774484           485.344574  1452.119057   150.202460
+    17                  brand      -0.054347            -0.111828    -0.057481   105.768387
+    4                  os_bit      -8.230644            -1.451952     6.778693    82.359200
+    11                 os_Mac    2381.759624           485.344574 -1896.415051    79.622437
+    14      weight_ThinNlight     181.630575            49.065617  -132.564958    72.986037
+    16           msoffice_Yes    -152.761877           -43.812056   108.949821    71.320033
+    8       Number of Ratings      -0.123110            -0.059274     0.063837    51.853207
+    6                warranty     109.885448            54.823866   -55.061582    50.108165
+    1                  ram_gb      41.318974            22.462299   -18.856674    45.636841
+    0         processor_gnrtn    -149.991102           -91.761750    58.229353    38.821871
+    3                     hdd       0.672874             0.531026    -0.141848    21.080913
+    19               ram_type       0.349484             0.409567     0.060083    17.192026
+    2                     ssd       2.853344             2.417120    -0.436224    15.288168
+    13          weight_Gaming    -764.571462          -673.217288    91.354174    11.948415
+    18         processor_name       0.487830             0.437506    -0.050324    10.315920
+    12             os_Windows   -2117.685207         -2013.470499   104.214708     4.921161
+    7                  rating    -296.003662          -281.913786    14.089876     4.760034
+    15        Touchscreen_Yes     952.000783           928.494640   -23.506143     2.469131
+    5         graphic_card_gb     255.582581           254.240524    -1.342057     0.525097
+
+    RSME: 587.9085271375143, o modelo erra aproximadamente 587.90$ por laptop
+    R²: 0.8601782418407798, o modelo consegue explicar aproximadamente 86% da variabilidade de preço
+    Teste de Breusch–Pagan: 0.0.00000000006167724282595556 < 0.05, ou seja, há heterocedasticidade
