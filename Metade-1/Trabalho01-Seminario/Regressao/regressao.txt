@@ -313,4 +313,4 @@ Regressão sem valores influentes (cook):
 
     RSME: 587.9085271375143, o modelo erra aproximadamente 587.90$ por laptop
     R²: 0.8601782418407798, o modelo consegue explicar aproximadamente 86% da variabilidade de preço
-    Teste de Breusch–Pagan: 0.0.00000000006167724282595556 < 0.05, ou seja, há heterocedasticidade
+    Teste de Breusch–Pagan: 0.00000000006167724282595556 < 0.05, ou seja, há heterocedasticidade

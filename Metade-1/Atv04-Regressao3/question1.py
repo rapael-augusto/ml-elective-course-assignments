@@ -94,7 +94,7 @@ residue = np.abs(y_train - predicted_y)
 #                # área, bem mais caro será
 # print("Intercepto:", model_inter.intercept_)
 
-#4. Mostre os coecientes do modelo treinado antes e depois da remoção de valores influentes.
+#4. Mostre os coeficientes do modelo treinado antes e depois da remoção de valores influentes.
 
 # X_cook = sm.add_constant(X_train)
 # model_cook = sm.OLS(y_train, X_cook).fit()
