@@ -10,4 +10,5 @@ A collection of assignments from the ml elective course from UFAPE (Universidade
 * [Scipy](https://scipy.org/)
 
 ## Contribuiting:
-* **[Raphael Augusto Paulino Leite] (https://github.com/rapael-augusto)**
+* **[Raphael Augusto] (https://github.com/rapael-augusto)**
+* **[Tayson Joel] (https://github.com/Taysonj0)**
